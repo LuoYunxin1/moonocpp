@@ -1,0 +1,14 @@
+MoonOCPP
+Copyright (c) 2026 LuoYunxin1
+
+This repository is a MoonBit reimplementation of the OCPP 1.6 JSON
+application-message model popularized by mobilityhouse/ocpp.
+
+Upstream project: mobilityhouse/ocpp
+URL: https://github.com/mobilityhouse/ocpp
+Tag / commit: v2.1.0 / 91f4f89140a2198dc5a300cfea88d947ac91ae28
+Upstream license: MIT
+
+The Python sources are not copied into this repository. Field names,
+action sets, CallError spellings, and camelCase wire keys follow that
+library and the OCPP 1.6 JSON specification.
