@@ -1,0 +1,33 @@
+name: MoonBit checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install MoonBit
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh -o /tmp/install-moonbit.sh
+          bash /tmp/install-moonbit.sh
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+      - name: Toolchain versions
+        run: moon version --all
+      - name: Check supported targets
+        run: |
+          moon check --target wasm-gc --deny-warn
+          moon check --target wasm --deny-warn
+          moon check --target js --deny-warn
+          moon check --target native --deny-warn
+      - name: Test supported local targets
+        run: |
+          moon test --target wasm-gc --deny-warn
+          moon test --target wasm --deny-warn
+          moon test --target js --deny-warn
+      - name: Build and demo
+        run: |
+          moon build --target wasm-gc --deny-warn
+          moon run cmd/main --target wasm-gc
