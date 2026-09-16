@@ -1,0 +1,7 @@
+import {
+  "LuoYunxin1/moonocpp" @ocpp,
+}
+
+options(
+  "is-main": true,
+)
